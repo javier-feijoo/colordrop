@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FloodIt Puzzle</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <div id="menu" class="screen active">
+    <div class="logo-placeholder"><img class="logo" src="assets/images/logo.png" alt="ColorDrop" title="ColorDrop"></div>
+    <div class="level-cards">
+      <div class="level-card selected" data-value="10x10x20" id="facil">
+        Fácil
+        <span>(10x10 - 20 movs)</span>
+      </div>
+      <div class="level-card" data-value="15x15x25" id="intermedio">
+        Intermedio
+        <span>(15x15 - 25 movs)</span>
+      </div>
+      <div class="level-card" data-value="20x20x30" id="avanzado">
+        Avanzado
+        <span>(20x20 - 30 movs)</span>
+      </div>
+    </div>
+
+    <div class="slider-wrapper">
+      <label for="animationSpeed">Velocidad: <span id="speedLabel">Media</span></label>
+      <div class="slider-indicator">
+        <span class="slider-symbol">-</span>
+        <input type="range" id="animationSpeed" min="0" max="5" value="3" />
+        <span class="slider-symbol">+</span>
+      </div>
+    </div>
+
+    <div class="menu-buttons">
+      <button onclick="startGame()">Comenzar</button>
+      <button onclick="showHelp()">¿Cómo se juega?</button>
+    </div>
+  </div>
+
+  <div id="game" class="screen">
+    <div class="logo-placeholder"><img class="logo" src="assets/images/logo.png" alt="ColorDrop" title="ColorDrop"></div>
+
+    <svg id="board"></svg>
+
+    <div class="info" id="info">Movimientos: 0/0</div>
+
+    <div class="color-rows">
+      <div class="controls" id="colorRow1"></div>
+      <div class="controls" id="colorRow2"></div>
+    </div>
+
+    <div class="info" id="difficultyInfo">Nivel: Fácil</div>
+
+    <div class="game-buttons">
+      <button onclick="restartGame()">Reintentar</button>
+      <button onclick="goToMenu()">Salir</button>
+    </div>
+  </div>
+
+  <div id="helpModal" class="modal">
+    <div class="modal-content">
+      <h2>¿Cómo se juega?</h2>
+      <p>Haz clic en los colores para llenar el tablero comenzando desde la esquina superior izquierda. El objetivo es
+        unificar todos los bloques con el mismo color en el menor número de movimientos posible.</p>
+      <button onclick="closeHelp()">Cerrar</button>
+    </div>
+  </div>
+
+  <script src="js/script.js"></script>
+  <div id="endMessage" class="end-message hidden">
+    <div class="end-box" id="endBox">
+      <p id="endText">Texto</p>
+      <button id="endContinue" onclick="handleContinue()">Continuar</button>
+    </div>
+  </div>
+</body>
+
+</html>
