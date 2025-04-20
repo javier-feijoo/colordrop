@@ -42,6 +42,6 @@ Este proyecto está bajo la Licencia MIT. Consulta el archivo `LICENSE` para má
 
 ## 📞 Contacto
 
-Si tienes preguntas o comentarios, puedes contactarnos en [correo@ejemplo.com](mailto:correo@ejemplo.com).
+Si tienes preguntas o comentarios, puedes contactarnos en [javierfeijoo@edu.xunta.gal](mailto:javierfeijoo@edu.xunta.gal).
 
 ¡Gracias por jugar **ColorDrop** y disfruta del desafío!
