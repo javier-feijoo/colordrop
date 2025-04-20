@@ -9,8 +9,10 @@
 </head>
 
 <body>
+  <!-- Pantalla del menú principal -->
   <div id="menu" class="screen active">
-    <div class="logo-placeholder"><img class="logo" src="assets/images/logo.png" alt="ColorDrop" title="ColorDrop"></div>
+    <div class="logo-placeholder"><img class="logo" src="assets/images/logo.png" alt="ColorDrop" title="ColorDrop">
+    </div>
     <div class="level-cards">
       <div class="level-card selected" data-value="10x10x20" id="facil">
         Fácil
@@ -20,7 +22,7 @@
         Intermedio
         <span>(15x15 - 25 movs)</span>
       </div>
-      <div class="level-card" data-value="20x20x30" id="avanzado">
+      <div class="level-card" data-value="20x20x35" id="avanzado">
         Avanzado
         <span>(20x20 - 30 movs)</span>
       </div>
@@ -41,8 +43,10 @@
     </div>
   </div>
 
+  <!-- Pantalla del juego -->
   <div id="game" class="screen">
-    <div class="logo-placeholder"><img class="logo" src="assets/images/logo.png" alt="ColorDrop" title="ColorDrop"></div>
+    <div class="logo-placeholder"><img class="logo" src="assets/images/logo.png" alt="ColorDrop" title="ColorDrop">
+    </div>
 
     <svg id="board"></svg>
 
@@ -61,6 +65,7 @@
     </div>
   </div>
 
+  <!-- Modal de ayuda -->
   <div id="helpModal" class="modal">
     <div class="modal-content">
       <h2>¿Cómo se juega?</h2>
@@ -70,13 +75,18 @@
     </div>
   </div>
 
-  <script src="js/script.js"></script>
+
+  <!-- Modal Mensaje de fin del juego -->
   <div id="endMessage" class="end-message hidden">
     <div class="end-box" id="endBox">
       <p id="endText">Texto</p>
       <button id="endContinue" onclick="handleContinue()">Continuar</button>
     </div>
   </div>
+
+  <!-- Script principal -->
+  <script src="js/script.js"></script>
+
 </body>
 
 </html>
