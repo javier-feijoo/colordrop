@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ColorDrop v1.0</title>
   <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
 <body>
@@ -24,12 +25,12 @@
       </div>
       <div class="level-card" data-value="20x20x35" id="avanzado">
         Avanzado
-        <span>(20x20 - 30 movs)</span>
+        <span>(20x20 - 35 movs)</span>
       </div>
     </div>
 
     <div class="slider-wrapper">
-      <label for="animationSpeed">Velocidad: <span id="speedLabel">Media</span></label>
+      <label for="animationSpeed">Animación: <span id="speedLabel">Media</span></label>
       <div class="slider-indicator">
         <span class="slider-symbol">-</span>
         <input type="range" id="animationSpeed" min="0" max="5" value="3" />
@@ -80,6 +81,7 @@
   <div id="endMessage" class="end-message hidden">
     <div class="end-box" id="endBox">
       <p id="endText">Texto</p>
+      <p id="endScore">Puntuación</p>
       <button id="endContinue" onclick="handleContinue()">Continuar</button>
     </div>
   </div>

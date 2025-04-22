@@ -5,6 +5,9 @@ let moves = 0;
 let maxMoves = 20;
 let currentColor = "";
 let animationSpeed = 3;
+let secondsElapsed = 0;
+let timerInterval = null;
+
 
 // Colores disponibles juego
 const colors = ["#0072B2", "#D55E00", "#009E73", "#CC79A7", "#F0E442", "#56B4E9"];
@@ -62,7 +65,8 @@ function createBoard() {
 
 // Actualiza la información de movimientos en pantalla
 function updateInfo() {
-    info.textContent = `Movimientos: ${moves}/${maxMoves}`;
+    let tiempo=formatTime(secondsElapsed);
+    info.textContent = `Movimientos: ${moves}/${maxMoves}  |  🕒 ${tiempo}`;
 }
 
 // Algoritmo de Flood Fill para cambiar colores
@@ -96,11 +100,13 @@ function handleColorClick(color) {
 
     // Verifica si el jugador ganó o perdió mediante la función checkWin
     if (checkWin()) {
+        stopTimer();
         sounds.success.play();
         sounds.bg.pause();
-        sounds.bg.currentTime = 0;
+        sounds.bg.currentTime = 0;        
         showEndMessage("¡Has ganado!", "success");
     } else if (moves >= maxMoves) {
+        stopTimer();
         sounds.error.play();
         sounds.bg.pause();
         sounds.bg.currentTime = 0;
@@ -145,6 +151,7 @@ function startGame() {
     size = parseInt(w);
     maxMoves = parseInt(m);
     moves = 0;
+    secondsElapsed=0;
 
     const level = selected.id;
     updateDifficultyColor(level);
@@ -154,6 +161,7 @@ function startGame() {
     createBoard();
     setupButtons();
     sounds.bg.play();
+    startTimer();
 }
 
 // Actualiza la información de dificultad
@@ -180,8 +188,10 @@ function showEndMessage(text, type) {
     const msg = document.getElementById("endMessage");
     const box = document.getElementById("endBox");
     const textEl = document.getElementById("endText");
-
+    const textScore= document.getElementById("endScore");
+    let tiempo=formatTime(secondsElapsed);  
     textEl.textContent = text;
+    textScore.textContent=`Movimientos: ${moves}/${maxMoves}  |  🕒 ${tiempo}`;
     box.className = `end-box ${type}`;
     msg.classList.remove("hidden");
 }
@@ -194,6 +204,9 @@ function handleContinue() {
 
 function restartGame() {
     moves = 0;
+    stopTimer();
+    secondsElapsed = 0;
+    startTimer();    
     createBoard();
 }
 
@@ -229,3 +242,23 @@ document.getElementById("animationSpeed").addEventListener("input", e => {
     const levels = ["Desactivada", "Muy lenta", "Lenta", "Media", "Rápida", "Muy rápida"];
     label.textContent = levels[animationSpeed] || "Media";
 });
+
+
+/* ============ TEMPORIZADOR ============ */
+function startTimer() {
+    stopTimer();
+    timerInterval = setInterval(() => {
+        secondsElapsed++;
+        updateInfo();
+    }, 1000);
+}
+
+function stopTimer() {
+    clearInterval(timerInterval);
+}
+
+function formatTime(seconds) {
+    const minutes = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${minutes}:${secs < 10 ? '0' : ''}${secs}`;
+}
