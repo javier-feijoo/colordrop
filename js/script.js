@@ -1,9 +1,3 @@
-if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/service-worker.js')
-      .then(reg => console.log('Service Worker registrado', reg))
-      .catch(err => console.log('Error al registrar Service Worker', err));
-  }
-
 // VARIABLES GLOBALES
 let board = [];
 let size = 10;
