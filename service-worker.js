@@ -5,8 +5,8 @@ const urlsToCache = [
   "/assets/sounds/click.mp3",
   "/assets/sounds/error.mp3",
   "/assets/sounds/success.mp3",
-  "/assets/icon-192.png",
-  "/assets/icon-512.png"
+  "/assets/images/icon-192.png",
+  "/assets/images/icon-512.png"
 ];
 
 self.addEventListener('install', event => {
