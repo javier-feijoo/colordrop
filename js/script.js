@@ -21,7 +21,7 @@ const row2 = document.getElementById("colorRow2");
 
 // Sonidos del juego
 const sounds = {
-    click:null, // new Audio('../assets/sounds/click.mp3'),
+    click: null, // new Audio('../assets/sounds/click.mp3'),
     success: null, //  new Audio('../assets/sounds/success.mp3'),
     error: null, //  new Audio('../assets/sounds/error.mp3'),
     bg: null, //  new Audio('../assets/sounds/background_loop.mp3'),
@@ -64,7 +64,7 @@ function createBoard() {
 
 // Actualiza la información de movimientos en pantalla
 function updateInfo() {
-    let tiempo=formatTime(secondsElapsed);
+    let tiempo = formatTime(secondsElapsed);
     info.textContent = `Movimientos: ${moves}/${maxMoves}  |  🕒 ${tiempo}`;
 }
 
@@ -102,7 +102,7 @@ function handleColorClick(color) {
         stopTimer();
         sounds.success.play();
         sounds.bg.pause();
-        sounds.bg.currentTime = 0;        
+        sounds.bg.currentTime = 0;
         showEndMessage("¡Has ganado!", "success");
     } else if (moves >= maxMoves) {
         stopTimer();
@@ -146,11 +146,15 @@ function setupButtons() {
 // Inicia el juego
 function startGame() {
 
-   sounds.click= new Audio('../assets/sounds/click.mp3');
-   sounds.success=  new Audio('../assets/sounds/success.mp3');
-   sounds.error= new Audio('../assets/sounds/error.mp3');
-   sounds.bg=   new Audio('../assets/sounds/background_loop.mp3');
-   sounds.bg.loop = true;
+    sounds.click = new Audio('assets/sounds/click.mp3');
+    sounds.success = new Audio('assets/sounds/success.mp3');
+    sounds.error = new Audio('assets/sounds/error.mp3');
+    sounds.bg = new Audio('assets/sounds/background_loop.mp3');
+    sounds.click.load();
+    sounds.success.load();
+    sounds.error.load();
+    sounds.bg.load();
+    sounds.bg.loop = true;
     sounds.bg.volume = 0.2;
 
     const selected = document.querySelector(".level-card.selected");
@@ -158,7 +162,7 @@ function startGame() {
     size = parseInt(w);
     maxMoves = parseInt(m);
     moves = 0;
-    secondsElapsed=0;
+    secondsElapsed = 0;
 
     const level = selected.id;
     updateDifficultyColor(level);
@@ -195,10 +199,10 @@ function showEndMessage(text, type) {
     const msg = document.getElementById("endMessage");
     const box = document.getElementById("endBox");
     const textEl = document.getElementById("endText");
-    const textScore= document.getElementById("endScore");
-    let tiempo=formatTime(secondsElapsed);  
+    const textScore = document.getElementById("endScore");
+    let tiempo = formatTime(secondsElapsed);
     textEl.textContent = text;
-    textScore.textContent=`Movimientos: ${moves}/${maxMoves}  |  🕒 ${tiempo}`;
+    textScore.textContent = `Movimientos: ${moves}/${maxMoves}  |  🕒 ${tiempo}`;
     box.className = `end-box ${type}`;
     msg.classList.remove("hidden");
 }
@@ -213,7 +217,7 @@ function restartGame() {
     moves = 0;
     stopTimer();
     secondsElapsed = 0;
-    startTimer();    
+    startTimer();
     createBoard();
 }
 
