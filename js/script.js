@@ -21,13 +21,12 @@ const row2 = document.getElementById("colorRow2");
 
 // Sonidos del juego
 const sounds = {
-    click: new Audio('../assets/sounds/click.mp3'),
-    success: new Audio('../assets/sounds/success.mp3'),
-    error: new Audio('../assets/sounds/error.mp3'),
-    bg: new Audio('../assets/sounds/background_loop.mp3'),
+    click:null, // new Audio('../assets/sounds/click.mp3'),
+    success: null, //  new Audio('../assets/sounds/success.mp3'),
+    error: null, //  new Audio('../assets/sounds/error.mp3'),
+    bg: null, //  new Audio('../assets/sounds/background_loop.mp3'),
 };
-sounds.bg.loop = true;
-sounds.bg.volume = 0.2;
+
 
 // Función para crear el tablero
 function createBoard() {
@@ -146,6 +145,14 @@ function setupButtons() {
 
 // Inicia el juego
 function startGame() {
+
+   sounds.click= new Audio('../assets/sounds/click.mp3');
+   sounds.success=  new Audio('../assets/sounds/success.mp3');
+   sounds.error= new Audio('../assets/sounds/error.mp3');
+   sounds.bg=   new Audio('../assets/sounds/background_loop.mp3');
+   sounds.bg.loop = true;
+    sounds.bg.volume = 0.2;
+
     const selected = document.querySelector(".level-card.selected");
     const [w, h, m] = selected.dataset.value.split("x");
     size = parseInt(w);
